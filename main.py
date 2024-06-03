@@ -1,7 +1,6 @@
 import openai
 import streamlit as st
 import os
-from dotenv import load_dotenv
 import time
 from threading import Timer
 import gspread
@@ -9,9 +8,6 @@ from google.oauth2.service_account import Credentials
 import json
 import pytz
 from datetime import datetime
-
-# Load environment variables
-load_dotenv()
 
 # Initialize the OpenAI client
 api_key = os.getenv('OPENAI_API_KEY')

@@ -10,8 +10,9 @@ import pytz
 from datetime import datetime
 
 # Initialize the OpenAI client
-api_key = os.getenv('OPENAI_API_KEY')
-client = openai.OpenAI(api_key=api_key)
+api_key = st.secrets["openai_api_key"]
+print(api_key)
+client = openai.OpenAI(api_key = st.secrets["openai_api_key"])
 
 # Google Sheets setup
 credentials_file = os.getenv('GOOGLE_API_KEY')  # Make sure this is the correct path
@@ -40,10 +41,10 @@ else:
 
 # Define the sub-products and their corresponding assistant IDs
 sub_products = {
-    ":racing_car:  1P OUTBOUND App": {"title": ":racing_car:  1P OUTBOUND AUTO APP ASSISTANT", "assistant_id": "asst_0DNRoZlp8fEOLZHVIEtkclWQ"},
-    "1P INBOUND App": {"title": "1P INBOUND AUTO APP ASSISTANT", "assistant_id": "asst_jRwTRKlGmLddeAPA8pVgjEGM"},
-    ":moneybag:3P OUTBOUND App": {"title": ":moneybag: 3P OUTBOUND APP ASSISTANT", "assistant_id": "asst_fN62Ct3gP0suki42r5MPx27b"},
-    "3P INBOUND App": {"title": "3P INBOUND APP ASSISTANT", "assistant_id": "asst_S0OVC8LuiP1IxPi94ybDG1KL"}
+    ":racing_car:  1P OUTBOUND App": {"title": ":racing_car:  1P OUTBOUND AUTO APP ASSISTANT", "assistant_id": st.secrets.assistants["1p_outbound"]},
+    "1P INBOUND App": {"title": "1P INBOUND AUTO APP ASSISTANT", "assistant_id": st.secrets.assistants["1p_inbound"]},
+    ":moneybag:3P OUTBOUND App": {"title": ":moneybag: 3P OUTBOUND APP ASSISTANT", "assistant_id": st.secrets.assistants["3p_outbound"]},
+    "3P INBOUND App": {"title": "3P INBOUND APP ASSISTANT", "assistant_id": st.secrets.assistants["3p_inbound"]}
 }
 
 # Sidebar for selecting sub-product
